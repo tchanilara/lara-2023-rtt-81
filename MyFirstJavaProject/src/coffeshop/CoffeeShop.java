@@ -54,8 +54,8 @@ public class CoffeeShop {
 	
 	public void printAllItems() {
 		int size = getLongestSize(order);
-		for (Product item : order) {
-			printProduct(item, size);
+		for (Product elt : order) {
+			printProduct(elt, size);
 		}
 	}
 	
