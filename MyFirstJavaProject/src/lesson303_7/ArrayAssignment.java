@@ -98,6 +98,16 @@ public class ArrayAssignment {
 		}
 		scan.close();
 		System.out.println("Your favorite  things are: " + Arrays.toString(choice));
+		
+		//loop null
+		int number = 0;
+		String[] arrayNull = new String[] {null, "bon", "soir", null, ""};
+		for (String value: arrayNull) {
+			if(value == null) {
+				number++;
+			}
+		}
+		System.out.println(number);
 	}
 
 }

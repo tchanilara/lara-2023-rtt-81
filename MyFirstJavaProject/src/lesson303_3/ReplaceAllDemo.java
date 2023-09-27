@@ -14,6 +14,19 @@ public class ReplaceAllDemo {
 
 	    // replace a digit or sequence of digits with a whitespace
 	    System.out.println(str2.replaceAll(regex, " "));
+	    
+	    //find index last voyelle
+	    String voyelleRegex ="aeiuo";
+	    String example ="This is an expmpl";
+	    int index = -1;
+	    for(int i = example.length() -1; i>=0; i--) {
+	    	if(voyelleRegex.indexOf(example.charAt(i)) != -1) {
+	    		index = i;
+	    		break;
+	    	}
+	    }
+	    
+	    System.out.println(index);
 
 	}
 
