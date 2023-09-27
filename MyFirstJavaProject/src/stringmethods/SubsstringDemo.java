@@ -55,9 +55,10 @@ public class SubsstringDemo {
 	    		break;
 	    	}
 	    }
-	    for(int i = example.length() -1; i>=0; i--) {
+	    for(int i = 0; i < example.length(); i++) {
 	    	if(vowel.indexOf(example.charAt(i)) != -1) {
 	    		indexVowel = i;
+	    		break;
 	    	}
 	    }
 		System.out.println("The characters between the first and last vowel of the string: " + example.substring(indexVowel, lastIndexVowel));
