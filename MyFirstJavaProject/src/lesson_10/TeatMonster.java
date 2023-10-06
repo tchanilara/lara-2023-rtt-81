@@ -22,7 +22,7 @@ public class TeatMonster {
 
 
 	      // We have a problem here!!!
-	     // Monster m4 = new Monster("u2u2");
+	     // StoneMonster m4 = new Monster("u2u2");
 	     // System.out.println(m4.attack());  // garbage!!!
 
 	}
