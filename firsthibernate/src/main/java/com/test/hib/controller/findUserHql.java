@@ -29,7 +29,7 @@ public class findUserHql {
 		Session session = factory.openSession();
 		/* ------------ Example of HQL to get all the records------- */
 		String hql = "SELECT u FROM User u";
-		Query query = session.createQuery(hql);
+		TypedQuery query = session.createQuery(hql, User.class);
 		List<User> list = query.getResultList();
 
 		for (User u : list) {

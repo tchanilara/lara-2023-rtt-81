@@ -1,5 +1,7 @@
 package org.perscholas.database.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +13,17 @@ public class Customer {
     @Column(name = "id")
 	private Integer id;
 	
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	List<Order> orders;
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	@Column(name = "customer_name")
 	private String customerName;
 	
