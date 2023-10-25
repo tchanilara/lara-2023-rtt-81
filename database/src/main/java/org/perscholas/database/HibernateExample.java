@@ -5,7 +5,7 @@ import java.util.List;
 import org.perscholas.database.dao.CustomerDAO;
 import org.perscholas.database.dao.OrderDAO;
 import org.perscholas.database.dao.OrderDetailsDAO;
-import org.perscholas.database.dao.productDAO;
+import org.perscholas.database.dao.ProductDAO;
 import org.perscholas.database.entity.Customer;
 import org.perscholas.database.entity.Order;
 import org.perscholas.database.entity.OrderDetails;
@@ -33,7 +33,7 @@ public class HibernateExample {
 		System.out.println(
 				order.getId() + " | " + order.getOrderDate() + " | " + order.getStatus() + " | " + order.getComments());
 
-		productDAO productDao = new productDAO();
+		ProductDAO productDao = new ProductDAO();
 		Product product = productDao.findById(1);
 		System.out
 				.println(product.getId() + " | " + product.getProductName() + " | " + product.getProductDescription());

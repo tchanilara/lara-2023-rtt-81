@@ -11,7 +11,7 @@ import org.perscholas.database.entity.Product;
 
 import jakarta.persistence.TypedQuery;
 
-public class productDAO {
+public class ProductDAO {
 	public Product findById(Integer id) {
 
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
