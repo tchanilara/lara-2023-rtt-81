@@ -23,8 +23,10 @@ public class CustomerDAO {
 		query.setParameter(1, id);
 		try {
 			Customer result = query.getSingleResult();
+			session.close();
 			return result;
 		} catch (NoResultException nre) {
+			session.close();
 			return null;
 
 		}
@@ -42,6 +44,7 @@ public class CustomerDAO {
 		query.setParameter("firstname", fname);
 
 		List<Customer> result = query.getResultList();
+		session.close();
 		return result;
 
 	}
@@ -54,6 +57,7 @@ public class CustomerDAO {
 		String hql = "FROM Customer"; // Example of HQL to get all records of user class
 		TypedQuery<Customer> query = session.createQuery(hql, Customer.class);
 		List<Customer> result = query.getResultList();
+		session.close();
 		return result;
 
 	}
@@ -66,7 +70,7 @@ public class CustomerDAO {
 
 		session.saveOrUpdate(c);
 		t.commit();
-
+		session.close();
 	}
 
 }

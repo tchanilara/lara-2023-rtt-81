@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class PrepareStatment {
-	 
+
 	public static void main(String[] args) throws SQLException {
 		FunctionClass myFunction = new FunctionClass();
 		Scanner scan = new Scanner(System.in);

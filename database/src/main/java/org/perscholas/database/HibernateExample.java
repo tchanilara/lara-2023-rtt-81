@@ -22,7 +22,7 @@ public class HibernateExample {
 		for (Customer c : customerList) {
 			System.out.println(c.getId() + " | " + c.getCustomerName());
 		}
-		
+
 		List<Customer> customerList1 = customerDao.findByFirstName("Leslie");
 		for (Customer c : customerList1) {
 			System.out.println(c.getId() + " | " + c.getCustomerName()+ " | " + c.getContactFirstname()+ " | " + c.getContactLastname());
@@ -43,7 +43,7 @@ public class HibernateExample {
 			System.out.println(
 					p.getId() + " | " + p.getProductName() + " | " + p.getProductDescription());
 		}
-		
+
 		OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAO();
 		OrderDetails orderDetails = orderDetailsDAO.findById(1);
 		System.out.println(

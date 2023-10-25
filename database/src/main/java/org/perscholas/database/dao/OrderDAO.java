@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.perscholas.database.entity.Customer;
 import org.perscholas.database.entity.Order;
 
 import jakarta.persistence.NoResultException;
@@ -44,7 +43,7 @@ public class OrderDAO {
 		return result;
 
 	}
-	
+
 	public void save(Order o) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
@@ -55,6 +54,6 @@ public class OrderDAO {
 		t.commit();
 
 	}
-	
+
 
 }

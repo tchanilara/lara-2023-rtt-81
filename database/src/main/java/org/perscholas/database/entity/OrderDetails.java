@@ -1,12 +1,16 @@
 package org.perscholas.database.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name= "orderdetails")
@@ -15,73 +19,30 @@ public class OrderDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-	private Integer id;
+	private @Getter @Setter Integer id;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "order_id", nullable = false)
+	private @Getter @Setter Order order;
 	
-	@Column(name = "order_id")
-	private Integer orderId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "product_id", nullable = false)
+	private @Getter @Setter Product product;
 	
-	@Column(name = "product_id")
-	private Integer productId;
-	
+	@Column(name = "order_id", insertable=false, updatable=false)
+	private @Getter @Setter Integer orderId;
+
+	@Column(name = "product_id", insertable=false, updatable=false)
+	private @Getter @Setter Integer productId;
+
 	@Column(name = "quantity_ordered")
-	private Integer quantityOrdered;
-	
+	private @Getter @Setter Integer quantityOrdered;
+
 	@Column(name = "price_each", columnDefinition="Decimal(10,2)")
-	private Double priceEach;
-	
+	private @Getter @Setter Double priceEach;
+
 	@Column(name = "order_line_number", columnDefinition = "smallint")
-	private Integer orderLineNumber;
+	private @Getter @Setter Integer orderLineNumber;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
-
-	public Integer getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
-
-	public Integer getQuantityOrdered() {
-		return quantityOrdered;
-	}
-
-	public void setQuantityOrdered(Integer quantityOrdered) {
-		this.quantityOrdered = quantityOrdered;
-	}
-
-	public Double getPriceEach() {
-		return priceEach;
-	}
-
-	public void setPriceEach(Double priceEach) {
-		this.priceEach = priceEach;
-	}
-
-	public Integer getOrderLineNumber() {
-		return orderLineNumber;
-	}
-
-	public void setOrderLineNumber(Integer orderLineNumber) {
-		this.orderLineNumber = orderLineNumber;
-	}
 	
-	//getters and setters
-	
-	
-
 }

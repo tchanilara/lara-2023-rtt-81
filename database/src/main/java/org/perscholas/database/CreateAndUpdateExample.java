@@ -2,7 +2,6 @@ package org.perscholas.database;
 
 import java.util.List;
 
-import org.hibernate.Transaction;
 import org.perscholas.database.dao.CustomerDAO;
 import org.perscholas.database.entity.Customer;
 
@@ -47,13 +46,13 @@ public class CreateAndUpdateExample {
 		}
 		System.out.println("we found "+ customers.size() + "records in the database");
 	}
-	
+
 
 	public static void main(String[] args) {
 
 		CreateAndUpdateExample caue = new CreateAndUpdateExample();
-		// caue.insertCustomerExample();
-		// caue.updateCustomerExample();
+		//caue.insertCustomerExample();
+		caue.updateCustomerExample();
 		caue.listQueery();
 
 	}

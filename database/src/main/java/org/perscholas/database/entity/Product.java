@@ -1,11 +1,18 @@
 package org.perscholas.database.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name= "products")
@@ -14,116 +21,38 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-	private Integer id;
+	private @Getter @Setter Integer id;
 	
+
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private @Getter @Setter List<OrderDetails> orderDetails;
+
 	@Column(name = "product_code")
-	private String productCode;
+	private @Getter @Setter String productCode;
 
 	@Column(name = "product_name")
-	private String productName;
-	
+	private @Getter @Setter String productName;
+
 	@Column(name = "productline_id")
-	private Integer productlineId;
-	
+	private @Getter @Setter Integer productlineId;
+
 	@Column(name = "product_scale")
-	private String productScale;
-	
+	private @Getter @Setter String productScale;
+
 	@Column(name = "product_vendor")
-	private String productVendor;
+	private @Getter @Setter String productVendor;
 
 	@Column(name = "product_description")
-	private String productDescription;
-	
+	private @Getter @Setter String productDescription;
+
 	@Column(name = "quantity_in_stock", columnDefinition = "smallint")
-	private Integer quantityInStock;
-	
+	private @Getter @Setter Integer quantityInStock;
+
 	@Column(name = "buy_price", columnDefinition="Decimal(10,2)")
-	private Double buyPrice;
-	
+	private @Getter @Setter Double buyPrice;
+
 	@Column(name = "msrp", columnDefinition="Decimal(10,2)")
-	private Double msrp;
+	private @Getter @Setter Double msrp;
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getProductCode() {
-		return productCode;
-	}
-
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public Integer getProductlineId() {
-		return productlineId;
-	}
-
-	public void setProductlineId(Integer productlineId) {
-		this.productlineId = productlineId;
-	}
-
-	public String getProductScale() {
-		return productScale;
-	}
-
-	public void setProductScale(String productScale) {
-		this.productScale = productScale;
-	}
-
-	public String getProductVendor() {
-		return productVendor;
-	}
-
-	public void setProductVendor(String productVendor) {
-		this.productVendor = productVendor;
-	}
-
-	public String getProductDescription() {
-		return productDescription;
-	}
-
-	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
-	}
-
-	public Integer getQuantityInStock() {
-		return quantityInStock;
-	}
-
-	public void setQuantityInStock(Integer quantityInStock) {
-		this.quantityInStock = quantityInStock;
-	}
-
-	public Double getBuyPrice() {
-		return buyPrice;
-	}
-
-	public void setBuyPrice(Double buyPrice) {
-		this.buyPrice = buyPrice;
-	}
-
-	public Double getMsrp() {
-		return msrp;
-	}
-
-	public void setMsrp(Double msrp) {
-		this.msrp = msrp;
-	}
-	
-	//getters and setters
-	
-
-} 
+}

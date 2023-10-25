@@ -1,7 +1,9 @@
 package org.perscholas.database.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,9 +12,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name= "orders")
@@ -21,99 +26,35 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-	private Integer id;
-	
-	@Column(name = "customer_id")
-	private Integer customerId;
-	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "customer_id", nullable = false, insertable=false, updatable=false)
-	private Customer customer;
-	
-	
-	public Customer getCustomer() {
-		return customer;
-	}
+	private @Getter @Setter Integer id;
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+	@Column(name = "customer_id", insertable=false, updatable=false)
+	private @Getter @Setter Integer customerId;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "customer_id", nullable = false)
+	private @Getter @Setter Customer customer;
+
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private @Getter @Setter List<OrderDetails> orderDetails;
 
 	@Column(name = "order_date")
     @Temporal(TemporalType.DATE)
-    private Date orderDate;
-	
+    private @Getter @Setter Date orderDate;
+
 	@Column(name = "required_date")
     @Temporal(TemporalType.DATE)
-    private Date requiredDate;
-	
+    private @Getter @Setter Date requiredDate;
+
 	@Column(name = "shipped_date")
     @Temporal(TemporalType.DATE)
-    private Date shippedDate;
-	
+    private @Getter @Setter Date shippedDate;
+
 	@Column(name = "status")
-	private String status;
-	
+	private @Getter @Setter String status;
+
 	@Column(name = "comments")
-	private String comments;
+	private @Getter @Setter String comments;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
-	}
-
-	public Date getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-
-	public Date getRequiredDate() {
-		return requiredDate;
-	}
-
-	public void setRequiredDate(Date requiredDate) {
-		this.requiredDate = requiredDate;
-	}
-
-	public Date getShippedDate() {
-		return shippedDate;
-	}
-
-	public void setShippedDate(Date shippedDate) {
-		this.shippedDate = shippedDate;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getComments() {
-		return comments;
-	}
-
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
 	
-	//getters and setters
-	
-
 }
