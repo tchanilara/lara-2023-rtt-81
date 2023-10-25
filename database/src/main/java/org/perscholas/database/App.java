@@ -17,7 +17,7 @@ public class App {
 		if (customer != null) {
 			System.out.println("Customer name"+ customer.getCustomerName());
 			Order order = new Order();
-			order.setCustomerId(customerId);
+			order.setCustomer(customer);
 			order.setStatus("ON Hold");
 			order.setOrderDate(new Date());
 			order.setRequiredDate(new Date());
@@ -31,7 +31,7 @@ public class App {
 	}
 
 	public void queryOrder() {
-		Order o = orderDao.findById(10424);
+		Order o = orderDao.findById(10100);
 		Customer c = o.getCustomer();
 		System.out.println(c.getId() + " | " + c.getCustomerName() + " | " + c.getContactFirstname() + " | "
 				+ c.getContactLastname());
