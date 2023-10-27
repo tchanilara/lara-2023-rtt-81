@@ -29,3 +29,4 @@ replay_pid*
 library/target/
 HibernateJPABeginner/target/
 firsthibernate/target/
+junit-examples/target/
