@@ -26,7 +26,7 @@ public class OrderDetailsDAO {
 
 	}
 
-	public OrderDetails findByIdOrderAndIdCustomer(Integer idOrder, Integer idCustomer) {
+	public OrderDetails findByIdOrderAndIdProduct(Integer idOrder, Integer idProduct) {
 
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
@@ -36,7 +36,7 @@ public class OrderDetailsDAO {
 		TypedQuery<OrderDetails> query = session.createQuery(hql, OrderDetails.class);
 
 		query.setParameter(1, idOrder);
-		query.setParameter(2, idCustomer);
+		query.setParameter(2, idProduct);
 		try {
 			OrderDetails result = query.getSingleResult();
 			session.close();

@@ -43,7 +43,7 @@ public class CreateOrderDetails {
 				if (idOrder > 0) {
 					Order o = orderDAO.findById(idOrder);
 
-					OrderDetails od1 = odDAO.findByIdOrderAndIdCustomer(idOrder, idProduct);
+					OrderDetails od1 = odDAO.findByIdOrderAndIdProduct(idOrder, idProduct);
 					if (od1 == null) {
 						OrderDetails od = new OrderDetails();
 						od.setOrder(o);
