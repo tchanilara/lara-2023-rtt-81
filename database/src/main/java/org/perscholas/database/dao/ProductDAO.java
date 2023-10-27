@@ -36,8 +36,7 @@ public class ProductDAO {
 
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
-
-		String hql = "FROM Product p WHERE p.productName = :name";
+		String hql = "FROM Product p WHERE p.productName LIKE CONCAT('%',:name,'%')";
 		TypedQuery<Product> query = session.createQuery(hql, Product.class);
 
 		query.setParameter("name", nameProduct);
