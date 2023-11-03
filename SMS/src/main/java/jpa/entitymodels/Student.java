@@ -16,6 +16,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name= "students")
+@Getter 
+@Setter
 public class Student {
 	
 	public Student(){
@@ -31,18 +33,18 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-	private @Getter @Setter Integer sId;
+	private  Integer sId;
 	
 	@Column(name = "sEmail")
-	private @Getter @Setter String sEmail; 
+	private  String sEmail; 
 	
 	@Column(name = "sName")
-	private @Getter @Setter String sName;
+	private  String sName;
 	
 	@Column(name = "sPassword")
-	private @Getter @Setter String sPass;
+	private  String sPass;
 	
 	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private @Getter @Setter List<StudentCourse> listCourses;
+	private  List<StudentCourse> listCourses;
 
 }

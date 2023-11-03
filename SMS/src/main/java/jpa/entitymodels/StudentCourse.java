@@ -14,6 +14,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name= "studentcourses")
+@Getter 
+@Setter
 public class StudentCourse {
 	
 	public StudentCourse() {
@@ -30,21 +32,21 @@ public class StudentCourse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private @Getter @Setter Integer scId;
+	private  Integer scId;
 	
 	@Column(name = "sId", insertable=false, updatable=false)
-	private @Getter @Setter Integer sId;
+	private  Integer sId;
 	
 	@Column(name = "cId", insertable=false, updatable=false)
-	private @Getter @Setter Integer cId;
+	private  Integer cId;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "sId", nullable = false)
-	private @Getter @Setter Student student;
+	private  Student student;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "cId", nullable = false)
-	private @Getter @Setter Course course;
+	private  Course course;
 	
 
 }

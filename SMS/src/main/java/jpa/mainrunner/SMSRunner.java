@@ -11,7 +11,6 @@ import jpa.service.StudentService;
 
 public class SMSRunner {
 
-
 	private Scanner scan;
 
 	private CourseService courseService;
@@ -43,7 +42,8 @@ public class SMSRunner {
 			break;
 
 		default:
-
+			System.out.println(ErrorMessage.goodBye());
+			break;
 		}
 	}
 
@@ -53,43 +53,65 @@ public class SMSRunner {
 		return scan.nextInt();
 	}
 
+	// check if student is validated and print his courses
 	private boolean studentLogin() {
-		
+
 		System.out.println("Enter your email address: ");
 		String email = scan.next();
 		System.out.println("Enter your password: ");
 		String password = scan.next();
-		if(studentService.validateStudent(email,password)) {
+		if (studentService.validateStudent(email, password)) {
 			this.currentStudent = studentService.getStudentByEmail(email);
+			List<Course> courses = studentService.getStudentCourses(currentStudent.getSEmail());
+			if (courses.size() > 0) {
+				System.out.println("\n\t\t************** My courses **************\n");
+				System.out.printf("%5s%25S%30s\n", "ID", "Course", "Instructor");
+				for (Course course : courses) {
+					System.out.println(course);
+				}
+			}
 			return true;
 		}
 		System.out.println(ErrorMessage.studentNotExist());
 		return false;
 	}
 
+// just to allow to student to do a choice
 	private void registerMenu() {
 		System.out.println("\n1.Register a class\n2. Logout\nPlease Enter Selection: ");
 
 		switch (scan.nextInt()) {
 		case 1:
-			List<Course> allCourses = courseService.getAllCourses();
-			System.out.printf("%5s%15S%15s\n", "ID", "Course", "Instructor");
-			for (Course course : allCourses) {
-				System.out.println(course);
-			}
-			
-			System.out.print("\nEnter Course Number: ");
-			int id = scan.nextInt();
-			
-			studentService.registerStudentToCourse(currentStudent.getSEmail(), id);
-			System.out.println("MyClasses");
-			for (Course course : studentService.getStudentCourses(currentStudent.getSEmail())) {
-				System.out.println(course);
-			}
+			studentRegister();
 			break;
 		case 2:
+			System.out.println(ErrorMessage.goodBye());
+			break;
 		default:
 			System.out.println(ErrorMessage.goodBye());
+		}
+	}
+
+	// just allow to student to register a new course
+	private void studentRegister() {
+		List<Course> allCourses = courseService.getAllCourses();
+		System.out.println("\n\t\t\t************** Liste of all the courses **************\n");
+		System.out.printf("%5s%30s%25s\n", "ID", "Course", "Instructor");
+		for (Course course : allCourses) {
+			System.out.println(course);
+		}
+
+		System.out.print("\nEnter Course Number: ");
+		int id = scan.nextInt();
+
+		studentService.registerStudentToCourse(currentStudent.getSEmail(), id);
+		List<Course> courses = studentService.getStudentCourses(currentStudent.getSEmail());
+		if (courses.size() > 0) {
+			System.out.println("\n\t\t************** My updated courses **************\n");
+			System.out.printf("%5s%30s%25s\n", "ID", "Course", "Instructor");
+			for (Course course : courses) {
+				System.out.println(course);
+			}
 		}
 	}
 

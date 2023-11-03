@@ -11,6 +11,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name= "courses")
+@Getter 
+@Setter
 public class Course {
 
 	public Course() {
@@ -25,16 +27,16 @@ public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private @Getter @Setter Integer cId;
+	private  Integer cId;
 	
 	@Override
 	public String toString() {
-		return "Course [cId=" + cId + ", cInstructor=" + cInstructor + ", cName=" + cName + "]";
+		return String.format("%5s%30S%25s", cId , cName  , cInstructor );
 	}
 
 	@Column(name = "cInstructorName")
-	private @Getter @Setter String cInstructor;
+	private  String cInstructor;
 	
 	@Column(name = "cName")
-	private @Getter @Setter String cName;
+	private  String cName;
 }
