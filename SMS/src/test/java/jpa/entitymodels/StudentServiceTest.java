@@ -44,7 +44,7 @@ public class StudentServiceTest {
 	@Test
 	public void registerStudentToCourseTest() {
 		int numbreCourse = studentService.getStudentCourses("sbowden1@yellowbook.com").size();
-		studentService.registerStudentToCourse("sbowden1@yellowbook.com", 6);
+		studentService.registerStudentToCourse("sbowden1@yellowbook.com", 10);
 		Assertions.assertEquals(numbreCourse + 1, studentService.getStudentCourses("sbowden1@yellowbook.com").size());
 	}
 

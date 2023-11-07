@@ -48,9 +48,10 @@ public class SMSRunner {
 	}
 
 	private int menu1() {
-		System.out.println("\n1.Student Login\n2. Quit Application\nPlease Enter Selection: ");
+		System.out.println("\t********** Welcome **********");
+		System.out.println("\n1. Student Login\n2. Quit Application\n\nPlease Enter Selection: ");
 
-		return scan.nextInt();
+		return scan.hasNextInt()? scan.nextInt() : -1;
 	}
 
 	// check if student is validated and print his courses
@@ -78,9 +79,9 @@ public class SMSRunner {
 
 // just to allow to student to do a choice
 	private void registerMenu() {
-		System.out.println("\n1.Register a class\n2. Logout\nPlease Enter Selection: ");
+		System.out.println("\n1. Register a class\n2. Logout\n\nPlease Enter Selection: ");
 
-		switch (scan.nextInt()) {
+		switch (scan.hasNextInt()? scan.nextInt() : -1) {
 		case 1:
 			studentRegister();
 			break;
@@ -102,7 +103,7 @@ public class SMSRunner {
 		}
 
 		System.out.print("\nEnter Course Number: ");
-		int id = scan.nextInt();
+		int id = scan.hasNextInt()? scan.nextInt() : -1;
 
 		studentService.registerStudentToCourse(currentStudent.getSEmail(), id);
 		List<Course> courses = studentService.getStudentCourses(currentStudent.getSEmail());
@@ -112,6 +113,7 @@ public class SMSRunner {
 			for (Course course : courses) {
 				System.out.println(course);
 			}
+			System.out.println(ErrorMessage.goodBye());
 		}
 	}
 

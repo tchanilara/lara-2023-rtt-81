@@ -1,0 +1,96 @@
+/* Center-align all content in the body */
+body {
+  text-align: center;
+}
+
+/* Styles for the project description */
+.project-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Styles for section headings */
+.section-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Styles for navigation links */
+.nav-link {
+  color: #0073E6;
+  text-decoration: none;
+}
+
+/* Styles for the navigation list */
+.navigation-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center-align navigation list */
+}
+
+/* Styles for team member sections */
+.team-member {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s; /* Add a smooth transition on hover */
+  display: inline-block; /* Display the cards side by side */
+}
+
+.team-member:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Change the box shadow on hover */
+  transform: translateY(-5px); /* Add a slight lift on hover */
+}
+
+/* Styles for member names */
+.member-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Styles for member images */
+.member-image {
+  max-width: 150px;
+}
+
+/* Styles for member bios */
+.member-bio {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 10px;
+  text-align: left; /* Reset text-align for this element */
+}
+
+/* Styles for attractions list */
+.attractions-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Styles for attractions list items */
+.attractions-list li {
+  font-size: 16px;
+  margin: 5px 0;
+  list-style: none;
+}
+
+/* Styles for city description */
+.city-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+/* Styles for the "Learn More" link */
+.learn-more-link {
+  color: #0073E6;
+  text-decoration: none;
+  font-weight: bold;
+}

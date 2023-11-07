@@ -87,13 +87,13 @@ public class StudentService implements StudentDAO {
 		Course course = new CourseService().getCourseById(id);
 		if (student == null) {
 			System.out.println(ErrorMessage.studentNotExist());
-			System.exit(0);
+			//System.exit(0);
 		} else if (course == null) {
 			System.out.println(ErrorMessage.courseNotExist());
-			System.exit(1);
+			//System.exit(1);
 		} else if (isRegistered(student.getSId(), id)) {
 			System.out.println(ErrorMessage.studentAlreadyRegistered());
-			System.exit(2);
+			//System.exit(2);
 		} else {
 			StudentCourse studentCourse = new StudentCourse(student.getSId(), id, student, course);
 
