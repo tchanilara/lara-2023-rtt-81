@@ -1,0 +1,128 @@
+:root {
+  --base-color: #171717;
+  --secondary-color: #a1460e;
+  --action-color: #cc6d3d;
+  --layover-color: #d2e1f36c;
+}
+
+body {
+  background-color: var(--base-color);
+  color: var(--action-color);
+  background-image: url(../images/garage-bg.jpg);
+  background-blend-mode: lighten;
+  background-size: contain;
+  /* background-repeat: no-repeat; */
+}
+
+nav {
+  margin-bottom: 150px;
+}
+
+a {
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  text-decoration: inherit;
+}
+
+.navbar a {
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: white;
+  text-shadow: 0 0 5px #b0b659, 0 0 10px #b65959, 0 0 15px #b66759,
+    0 0 20px #db6034, 0 0 35px #ff2a00, 0 0 40px #db6c34;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 300px)
+  ); /* This will create three columns */
+  gap: 30px; /* This is the shorthand for grid-gap */
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px; /* You might want some padding around the grid */
+}
+
+.card {
+  background-color: #171717;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Example shadow, adjust as needed */
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(255, 85, 0, 0.568); /* Adjust hover effect as needed */
+  cursor: pointer;
+}
+
+.image-container {
+  width: 100%;
+  height: auto; /* Make height auto to maintain image aspect ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* In case images are not the same size */
+}
+
+.image-container img {
+  width: 100%; /* Make image fill the container */
+  height: auto; /* Adjust height automatically to keep aspect ratio */
+  border-radius: 10px;
+}
+
+.navbar {
+  height: 15vh;
+  width: 95vw;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: top 0.3s;
+  z-index: 100; /* Ensure navbar is above other content */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 1) 0%,
+    /* Solid at the top */ rgba(0, 0, 0, 0.5) 50%,
+    /* Semi-transparent in the middle */ rgba(0, 0, 0, 0) 100%
+      /* Transparent at the bottom */
+  );
+  padding: 1rem;
+  height: 20vh;
+}
+
+.navbar-hidden {
+  top: -250px; /* Adjust as needed based on the height of your navbar */
+}
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+}
+
+/* Add media query for responsive adjustments */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+}
